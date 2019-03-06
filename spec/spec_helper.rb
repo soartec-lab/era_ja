@@ -1,68 +1,67 @@
 # -*- coding: utf-8 -*-
 require 'rspec'
 
-NEWERA_KANJI_FULL = "中村"
-NEWERA_KANJI_SHORT = "中"
-NEWERA_INITIAL_UPPER = "N"
-NEWERA_INITIAL_LOWER = "n"
+module EraJa
+  module Conversion
+    RSpec.shared_examples "should equal '#{NEWERA_INITIAL_UPPER}01.05.01'" do
+      context "with '%o%E.%m.%d'" do
+        it { expect(subject.to_era("%o%E.%m.%d")).to eq "#{NEWERA_INITIAL_UPPER}01.05.01" }
+      end
+    end
 
-RSpec.shared_examples "should equal '#{NEWERA_INITIAL_UPPER}01.05.01'" do
-  context "with '%o%E.%m.%d'" do
-    it { expect(subject.to_era("%o%E.%m.%d")).to eq "#{NEWERA_INITIAL_UPPER}01.05.01" }
-  end
-end
+    RSpec.shared_examples "should equal '#{NEWERA_KANJI_FULL}01年05月01日'" do
+      context "with '%O%E年%m月%d日'" do
+        it { expect(subject.to_era("%O%E年%m月%d日")).to eq "#{NEWERA_KANJI_FULL}01年05月01日" }
+      end
+    end
 
-RSpec.shared_examples "should equal '#{NEWERA_KANJI_FULL}01年05月01日'" do
-  context "with '%O%E年%m月%d日'" do
-    it { expect(subject.to_era("%O%E年%m月%d日")).to eq "#{NEWERA_KANJI_FULL}01年05月01日" }
-  end
-end
+    RSpec.shared_examples "should equal '#{NEWERA_KANJI_SHORT}01年05月01日'" do
+      context "with '%1O%E年%m月%d日'" do
+        it { expect(subject.to_era("%1O%E年%m月%d日")).to eq "#{NEWERA_KANJI_SHORT}01年05月01日" }
+      end
+    end
 
-RSpec.shared_examples "should equal '#{NEWERA_KANJI_SHORT}01年05月01日'" do
-  context "with '%1O%E年%m月%d日'" do
-    it { expect(subject.to_era("%1O%E年%m月%d日")).to eq "#{NEWERA_KANJI_SHORT}01年05月01日" }
-  end
-end
+    RSpec.shared_examples "should equal '01.05.01'" do
+      context "with '%E.%m.%d'" do
+        it { expect(subject.to_era("%E.%m.%d")).to eq "01.05.01" }
+      end
+    end
 
-RSpec.shared_examples "should equal '01.05.01'" do
-  context "with '%E.%m.%d'" do
-    it { expect(subject.to_era("%E.%m.%d")).to eq "01.05.01" }
-  end
-end
+    RSpec.shared_examples "should equal '0105'" do
+      context "with '%E%m'" do
+        it { expect(subject.to_era("%E%m")).to eq "0105" }
+      end
+    end
 
-RSpec.shared_examples "should equal '0105'" do
-  context "with '%E%m'" do
-    it { expect(subject.to_era("%E%m")).to eq "0105" }
-  end
-end
+    RSpec.shared_examples "should equal '#{NEWERA_KANJI_FULL}010501'" do
+      context "with '%O%E%m%d'" do
+        it { expect(subject.to_era("%O%E%m%d")).to eq "#{NEWERA_KANJI_FULL}010501" }
+      end
+    end
 
-RSpec.shared_examples "should equal '#{NEWERA_KANJI_FULL}010501'" do
-  context "with '%O%E%m%d'" do
-    it { expect(subject.to_era("%O%E%m%d")).to eq "#{NEWERA_KANJI_FULL}010501" }
-  end
-end
+    RSpec.shared_examples "should equal '#{NEWERA_KANJI_SHORT}010501'" do
+      context "with '%1O%E%m%d'" do
+        it { expect(subject.to_era("%1O%E%m%d")).to eq "#{NEWERA_KANJI_SHORT}010501" }
+      end
+    end
 
-RSpec.shared_examples "should equal '#{NEWERA_KANJI_SHORT}010501'" do
-  context "with '%1O%E%m%d'" do
-    it { expect(subject.to_era("%1O%E%m%d")).to eq "#{NEWERA_KANJI_SHORT}010501" }
-  end
-end
+    RSpec.shared_examples "should equal '2019年05月01日'" do
+      context "with '%Y年%m月%d日'" do
+        it { expect(subject.to_era("%Y年%m月%d日")).to eq "2019年05月01日" }
+      end
+    end
 
-RSpec.shared_examples "should equal '2019年05月01日'" do
-  context "with '%Y年%m月%d日'" do
-    it { expect(subject.to_era("%Y年%m月%d日")).to eq "2019年05月01日" }
-  end
-end
+    RSpec.shared_examples "should equal '#{NEWERA_KANJI_FULL}元年五月一日'" do
+      context "with '%O%JE年%Jm月%Jd日'" do
+        it { expect(subject.to_era("%O%JE年%Jm月%Jd日")).to eq "#{NEWERA_KANJI_FULL}元年五月一日" }
+      end
+    end
 
-RSpec.shared_examples "should equal '#{NEWERA_KANJI_FULL}元年五月一日'" do
-  context "with '%O%JE年%Jm月%Jd日'" do
-    it { expect(subject.to_era("%O%JE年%Jm月%Jd日")).to eq "#{NEWERA_KANJI_FULL}元年五月一日" }
-  end
-end
-
-RSpec.shared_examples "should equal '二千十九年五月一日'" do
-  context "with '%JY年%Jm月%Jd日'" do
-    it { expect(subject.to_era("%JY年%Jm月%Jd日")).to eq "二千十九年五月一日" }
+    RSpec.shared_examples "should equal '二千十九年五月一日'" do
+      context "with '%JY年%Jm月%Jd日'" do
+        it { expect(subject.to_era("%JY年%Jm月%Jd日")).to eq "二千十九年五月一日" }
+      end
+    end
   end
 end
 
@@ -237,17 +236,21 @@ RSpec.shared_examples "should raise error" do
   it { expect {subject.to_era}.to raise_error(RuntimeError, EraJa::Conversion::ERR_DATE_OUT_OF_RANGE) }
 end
 
-RSpec.shared_examples "2019,5,1" do
-  include_examples "should equal '#{NEWERA_INITIAL_UPPER}01.05.01'"
-  include_examples "should equal '#{NEWERA_KANJI_FULL}01年05月01日'"
-  include_examples "should equal '#{NEWERA_KANJI_SHORT}01年05月01日'"
-  include_examples "should equal '01.05.01'"
-  include_examples "should equal '0105'"
-  include_examples "should equal '#{NEWERA_KANJI_FULL}010501'"
-  include_examples "should equal '#{NEWERA_KANJI_SHORT}010501'"
-  include_examples "should equal '2019年05月01日'"
-  include_examples "should equal '#{NEWERA_KANJI_FULL}元年五月一日'"
-  include_examples "should equal '二千十九年五月一日'"
+module EraJa
+  module Conversion
+    RSpec.shared_examples "2019,5,1" do
+      include_examples "should equal '#{NEWERA_INITIAL_UPPER}01.05.01'"
+      include_examples "should equal '#{NEWERA_KANJI_FULL}01年05月01日'"
+      include_examples "should equal '#{NEWERA_KANJI_SHORT}01年05月01日'"
+      include_examples "should equal '01.05.01'"
+      include_examples "should equal '0105'"
+      include_examples "should equal '#{NEWERA_KANJI_FULL}010501'"
+      include_examples "should equal '#{NEWERA_KANJI_SHORT}010501'"
+      include_examples "should equal '2019年05月01日'"
+      include_examples "should equal '#{NEWERA_KANJI_FULL}元年五月一日'"
+      include_examples "should equal '二千十九年五月一日'"
+    end
+  end
 end
 
 RSpec.shared_examples "2012,4,29" do
