@@ -9,6 +9,11 @@ RSpec.describe Date do
       include_examples "2019,5,1"
     end
 
+    context 'date is 2019,4,30' do
+      subject { Date.new(2019,4,30) }
+      include_examples "2019,4,30"
+    end
+
     context "date is 2012,4,29" do
       subject { Date.new(2012,4,29) }
       include_examples "2012,4,29"
