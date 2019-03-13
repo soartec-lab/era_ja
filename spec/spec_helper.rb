@@ -3,123 +3,123 @@ require 'rspec'
 
 module EraJa
   module Conversion
-    RSpec.shared_examples "should equal '#{NEWERA_INITIAL_UPPER}01.05.01'" do
+    RSpec.shared_examples "should equal '#{NEWERA_INITIAL_UPPER}01.03.15'" do
       context "with '%o%E.%m.%d'" do
-        it { expect(subject.to_era("%o%E.%m.%d")).to eq "#{NEWERA_INITIAL_UPPER}01.05.01" }
+        it { expect(subject.to_era("%o%E.%m.%d")).to eq "#{NEWERA_INITIAL_UPPER}01.03.15" }
       end
     end
 
-    RSpec.shared_examples "should equal '#{NEWERA_KANJI_FULL}01年05月01日'" do
+    RSpec.shared_examples "should equal '#{NEWERA_KANJI_FULL}01年03月15日'" do
       context "with '%O%E年%m月%d日'" do
-        it { expect(subject.to_era("%O%E年%m月%d日")).to eq "#{NEWERA_KANJI_FULL}01年05月01日" }
+        it { expect(subject.to_era("%O%E年%m月%d日")).to eq "#{NEWERA_KANJI_FULL}01年03月15日" }
       end
     end
 
-    RSpec.shared_examples "should equal '#{NEWERA_KANJI_SHORT}01年05月01日'" do
+    RSpec.shared_examples "should equal '#{NEWERA_KANJI_SHORT}01年03月15日'" do
       context "with '%1O%E年%m月%d日'" do
-        it { expect(subject.to_era("%1O%E年%m月%d日")).to eq "#{NEWERA_KANJI_SHORT}01年05月01日" }
+        it { expect(subject.to_era("%1O%E年%m月%d日")).to eq "#{NEWERA_KANJI_SHORT}01年03月15日" }
       end
     end
 
-    RSpec.shared_examples "should equal '01.05.01'" do
+    RSpec.shared_examples "should equal '01.03.15'" do
       context "with '%E.%m.%d'" do
-        it { expect(subject.to_era("%E.%m.%d")).to eq "01.05.01" }
+        it { expect(subject.to_era("%E.%m.%d")).to eq "01.03.15" }
       end
     end
 
-    RSpec.shared_examples "should equal '0105'" do
+    RSpec.shared_examples "should equal '0103'" do
       context "with '%E%m'" do
-        it { expect(subject.to_era("%E%m")).to eq "0105" }
+        it { expect(subject.to_era("%E%m")).to eq "0103" }
       end
     end
 
-    RSpec.shared_examples "should equal '#{NEWERA_KANJI_FULL}010501'" do
+    RSpec.shared_examples "should equal '#{NEWERA_KANJI_FULL}010315'" do
       context "with '%O%E%m%d'" do
-        it { expect(subject.to_era("%O%E%m%d")).to eq "#{NEWERA_KANJI_FULL}010501" }
+        it { expect(subject.to_era("%O%E%m%d")).to eq "#{NEWERA_KANJI_FULL}010315" }
       end
     end
 
-    RSpec.shared_examples "should equal '#{NEWERA_KANJI_SHORT}010501'" do
+    RSpec.shared_examples "should equal '#{NEWERA_KANJI_SHORT}010315'" do
       context "with '%1O%E%m%d'" do
-        it { expect(subject.to_era("%1O%E%m%d")).to eq "#{NEWERA_KANJI_SHORT}010501" }
+        it { expect(subject.to_era("%1O%E%m%d")).to eq "#{NEWERA_KANJI_SHORT}010315" }
       end
     end
 
-    RSpec.shared_examples "should equal '2019年05月01日'" do
+    RSpec.shared_examples "should equal '2019年03月15日'" do
       context "with '%Y年%m月%d日'" do
-        it { expect(subject.to_era("%Y年%m月%d日")).to eq "2019年05月01日" }
+        it { expect(subject.to_era("%Y年%m月%d日")).to eq "2019年03月15日" }
       end
     end
 
-    RSpec.shared_examples "should equal '#{NEWERA_KANJI_FULL}元年五月一日'" do
+    RSpec.shared_examples "should equal '#{NEWERA_KANJI_FULL}元年三月十五日'" do
       context "with '%O%JE年%Jm月%Jd日'" do
-        it { expect(subject.to_era("%O%JE年%Jm月%Jd日")).to eq "#{NEWERA_KANJI_FULL}元年五月一日" }
+        it { expect(subject.to_era("%O%JE年%Jm月%Jd日")).to eq "#{NEWERA_KANJI_FULL}元年三月十五日" }
       end
     end
 
-    RSpec.shared_examples "should equal '二千十九年五月一日'" do
+    RSpec.shared_examples "should equal '二千十九年三月十五日'" do
       context "with '%JY年%Jm月%Jd日'" do
-        it { expect(subject.to_era("%JY年%Jm月%Jd日")).to eq "二千十九年五月一日" }
+        it { expect(subject.to_era("%JY年%Jm月%Jd日")).to eq "二千十九年三月十五日" }
       end
     end
 
-    RSpec.shared_examples "should equal 'H31.04.30'" do
+    RSpec.shared_examples "should equal 'H31.03.14'" do
       context "with '%o%E.%m.%d'" do
-        it { expect(subject.to_era("%o%E.%m.%d")).to eq "H31.04.30" }
+        it { expect(subject.to_era("%o%E.%m.%d")).to eq "H31.03.14" }
       end
     end
 
-    RSpec.shared_examples "should equal '平成31年04月30日'" do
+    RSpec.shared_examples "should equal '平成31年03月14日'" do
       context "with '%O%E年%m月%d日'" do
-        it { expect(subject.to_era("%O%E年%m月%d日")).to eq "平成31年04月30日" }
+        it { expect(subject.to_era("%O%E年%m月%d日")).to eq "平成31年03月14日" }
       end
     end
 
-    RSpec.shared_examples "should equal '平31年04月30日'" do
+    RSpec.shared_examples "should equal '平31年03月14日'" do
       context "with '%1O%E年%m月%d日'" do
-        it { expect(subject.to_era("%1O%E年%m月%d日")).to eq "平31年04月30日" }
+        it { expect(subject.to_era("%1O%E年%m月%d日")).to eq "平31年03月14日" }
       end
     end
 
-    RSpec.shared_examples "should equal '31.04.30'" do
+    RSpec.shared_examples "should equal '31.03.14'" do
       context "with '%E.%m.%d'" do
-        it { expect(subject.to_era("%E.%m.%d")).to eq "31.04.30" }
+        it { expect(subject.to_era("%E.%m.%d")).to eq "31.03.14" }
       end
     end
 
-    RSpec.shared_examples "should equal '3104'" do
+    RSpec.shared_examples "should equal '3103'" do
       context "with '%E%m'" do
-        it { expect(subject.to_era("%E%m")).to eq "3104" }
+        it { expect(subject.to_era("%E%m")).to eq "3103" }
       end
     end
 
-    RSpec.shared_examples "should equal '平成310430'" do
+    RSpec.shared_examples "should equal '平成310314'" do
       context "with '%O%E%m%d'" do
-        it { expect(subject.to_era("%O%E%m%d")).to eq "平成310430" }
+        it { expect(subject.to_era("%O%E%m%d")).to eq "平成310314" }
       end
     end
 
-    RSpec.shared_examples "should equal '平310430'" do
+    RSpec.shared_examples "should equal '平310314'" do
       context "with '%1O%E%m%d'" do
-        it { expect(subject.to_era("%1O%E%m%d")).to eq "平310430" }
+        it { expect(subject.to_era("%1O%E%m%d")).to eq "平310314" }
       end
     end
 
-    RSpec.shared_examples "should equal '2019年04月30日'" do
+    RSpec.shared_examples "should equal '2019年03月14日'" do
       context "with '%Y年%m月%d日'" do
-        it { expect(subject.to_era("%Y年%m月%d日")).to eq "2019年04月30日" }
+        it { expect(subject.to_era("%Y年%m月%d日")).to eq "2019年03月14日" }
       end
     end
 
-    RSpec.shared_examples "should equal '平成三十一年四月三十日'" do
+    RSpec.shared_examples "should equal '平成三十一年三月十四日'" do
       context "with '%O%JE年%Jm月%Jd日'" do
-        it { expect(subject.to_era("%O%JE年%Jm月%Jd日")).to eq "平成三十一年四月三十日" }
+        it { expect(subject.to_era("%O%JE年%Jm月%Jd日")).to eq "平成三十一年三月十四日" }
       end
     end
 
-    RSpec.shared_examples "should equal '二千十九年四月三十日'" do
+    RSpec.shared_examples "should equal '二千十九年三月十四日'" do
       context "with '%JY年%Jm月%Jd日'" do
-        it { expect(subject.to_era("%JY年%Jm月%Jd日")).to eq "二千十九年四月三十日" }
+        it { expect(subject.to_era("%JY年%Jm月%Jd日")).to eq "二千十九年三月十四日" }
       end
     end
   end
@@ -298,30 +298,30 @@ end
 
 module EraJa
   module Conversion
-    RSpec.shared_examples "2019,5,1" do
-      include_examples "should equal '#{NEWERA_INITIAL_UPPER}01.05.01'"
-      include_examples "should equal '#{NEWERA_KANJI_FULL}01年05月01日'"
-      include_examples "should equal '#{NEWERA_KANJI_SHORT}01年05月01日'"
-      include_examples "should equal '01.05.01'"
-      include_examples "should equal '0105'"
-      include_examples "should equal '#{NEWERA_KANJI_FULL}010501'"
-      include_examples "should equal '#{NEWERA_KANJI_SHORT}010501'"
-      include_examples "should equal '2019年05月01日'"
-      include_examples "should equal '#{NEWERA_KANJI_FULL}元年五月一日'"
-      include_examples "should equal '二千十九年五月一日'"
+    RSpec.shared_examples "2019,3,15" do
+      include_examples "should equal '#{NEWERA_INITIAL_UPPER}01.03.15'"
+      include_examples "should equal '#{NEWERA_KANJI_FULL}01年03月15日'"
+      include_examples "should equal '#{NEWERA_KANJI_SHORT}01年03月15日'"
+      include_examples "should equal '01.03.15'"
+      include_examples "should equal '0103'"
+      include_examples "should equal '#{NEWERA_KANJI_FULL}010315'"
+      include_examples "should equal '#{NEWERA_KANJI_SHORT}010315'"
+      include_examples "should equal '2019年03月15日'"
+      include_examples "should equal '#{NEWERA_KANJI_FULL}元年三月十五日'"
+      include_examples "should equal '二千十九年三月十五日'"
     end
 
-    RSpec.shared_examples "2019,4,30" do
-      include_examples "should equal 'H31.04.30'"
-      include_examples "should equal '平成31年04月30日'"
-      include_examples "should equal '平31年04月30日'"
-      include_examples "should equal '31.04.30'"
-      include_examples "should equal '3104'"
-      include_examples "should equal '平成310430'"
-      include_examples "should equal '平310430'"
-      include_examples "should equal '2019年04月30日'"
-      include_examples "should equal '平成三十一年四月三十日'"
-      include_examples "should equal '二千十九年四月三十日'"
+    RSpec.shared_examples "2019,3,14" do
+      include_examples "should equal 'H31.03.14'"
+      include_examples "should equal '平成31年03月14日'"
+      include_examples "should equal '平31年03月14日'"
+      include_examples "should equal '31.03.14'"
+      include_examples "should equal '3103'"
+      include_examples "should equal '平成310314'"
+      include_examples "should equal '平310314'"
+      include_examples "should equal '2019年03月14日'"
+      include_examples "should equal '平成三十一年三月十四日'"
+      include_examples "should equal '二千十九年三月十四日'"
     end
   end
 end

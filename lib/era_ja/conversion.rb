@@ -46,7 +46,7 @@ module EraJa
           str_time = era_year(year - 1911, :taisho, era_names)
         when self.to_time < ::Time.mktime(1989,1,8)
           str_time = era_year(year - 1925, :showa, era_names)
-        when self.to_time < ::Time.mktime(2019,5,1)
+        when self.to_time < ::Time.mktime(2019,3,15)
           str_time = era_year(year - 1988, :heisei, era_names)
         else
           str_time = era_year(year - 2018, NEWERA_KEY.to_sym, era_names)
