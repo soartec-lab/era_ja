@@ -84,7 +84,7 @@ module EraJa
       numeric = numeric.to_i
       kanzi_string = [nil, "一", "二", "三", "四", "五", "六", "七", "八", "九"]
       figures_string = { 1000 => "千", 100 => "百", 10 => "十", 1 => "" }
-      return kanzi + kanzi_string[numeric] if figures == 1
+      return "#{kanzi}#{kanzi_string[numeric]}" if figures == 1
 
       numeral = numeric / figures
       if numeral > 1
