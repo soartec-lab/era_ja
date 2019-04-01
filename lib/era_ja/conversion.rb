@@ -3,18 +3,12 @@ require 'date'
 
 module EraJa
   module Conversion
-    NEWERA_KEY = "nakamura"
-    NEWERA_KANJI_FULL = "中村"
-    NEWERA_KANJI_SHORT = "中"
-    NEWERA_INITIAL_UPPER = "N"
-    NEWERA_INITIAL_LOWER = "n"
-
     ERA_NAME_DEFAULTS = {
       meiji:      ["M", "明治"],
       taisho:     ["T", "大正"],
       showa:      ["S", "昭和"],
       heisei:     ["H", "平成"],
-      "#{NEWERA_KEY}".to_sym => ["N", "中村"]
+      reiwa:     ["R", "令和"],
     }.freeze
 
     ERR_DATE_OUT_OF_RANGE = "#to_era only works on dates after 1868,9,8".freeze
@@ -49,7 +43,7 @@ module EraJa
         when self.to_time < ::Time.mktime(2019,5,1)
           str_time = era_year(year - 1988, :heisei, era_names)
         else
-          str_time = era_year(year - 2018, NEWERA_KEY.to_sym, era_names)
+          str_time = era_year(year - 2018, :reiwa, era_names)
         end
       end
       str_time.gsub(/%J(\d+)/) { to_kanzi($1) }
